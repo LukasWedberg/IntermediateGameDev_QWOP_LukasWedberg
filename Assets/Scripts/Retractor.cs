@@ -10,6 +10,10 @@ public class Retractor : MonoBehaviour
 
     Rigidbody2D ropeHolderBody;
 
+    float retractionLerpSpeed = 4f;
+
+
+
 
 
     // Start is called before the first frame update
@@ -27,24 +31,28 @@ public class Retractor : MonoBehaviour
         {
             retracted = true;
 
-            transform.position = new Vector3(transform.position.x, 45f, 0);
+            //transform.position = new Vector3(transform.position.x, 45f, 0);
 
             ropeHolderBody.isKinematic = true;
-
-
-
 
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             retracted = false;
 
+            //transform.position = new Vector3(transform.position.x, 18.4f, 0);
+
             ropeHolderBody.isKinematic = false;
 
-            transform.position = new Vector3(transform.position.x, 18.4f, 0);
-
-
-            
         }
+
+        if (retracted)
+        {
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 45f, retractionLerpSpeed * Time.deltaTime), 0);
+        }
+        else {
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 18.4f, retractionLerpSpeed * Time.deltaTime), 0);
+        }
+
     }
 }
