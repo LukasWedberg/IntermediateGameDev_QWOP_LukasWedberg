@@ -32,13 +32,13 @@ public class GroundSensor : MonoBehaviour
         if (canJump)
         {
 
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 leftLegBody.AddForce(new Vector3(2, 3, 0) * legPower, ForceMode2D.Impulse);
 
                 canJump = false;
             }
-            else if(Input.GetKeyDown(KeyCode.A))
+            else if(Input.GetKeyDown(KeyCode.O))
             {
                 rightLegBody.AddForce(new Vector3(-2, 3, 0) * legPower, ForceMode2D.Impulse);
 
@@ -58,12 +58,17 @@ public class GroundSensor : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.transform.parent.gameObject.name == "Ground")
+        if (col.gameObject.transform.parent != null)
         {
-            Debug.Log("Robin, you're grounded!");
+            if (col.gameObject.transform.parent.gameObject.name == "Ground")
+            {
+                Debug.Log("Robin, you're grounded!");
 
-            canJump = true;
+                canJump = true;
+            }
         }
+
+        
     }
 
 }

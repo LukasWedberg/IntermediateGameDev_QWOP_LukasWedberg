@@ -27,7 +27,7 @@ public class Retractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             retracted = true;
 
@@ -36,7 +36,7 @@ public class Retractor : MonoBehaviour
             ropeHolderBody.isKinematic = true;
 
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             retracted = false;
 
