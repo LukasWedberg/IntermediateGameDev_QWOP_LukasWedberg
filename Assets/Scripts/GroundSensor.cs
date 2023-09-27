@@ -50,10 +50,17 @@ public class GroundSensor : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        //if (col.gameObject.name == "Ground")
-        //{
-          //  Debug.Log("Robin, you're grounded!");
-        //}
+        if (col.gameObject.transform.parent != null)
+        {
+            if (col.gameObject.transform.parent.gameObject.name == "Ground" || col.gameObject.transform.parent.gameObject.name == "Carriage")
+            {
+                Debug.Log("Robin, you're grounded!");
+
+                canJump = true;
+            }
+        }
+
+
 
     }
 
