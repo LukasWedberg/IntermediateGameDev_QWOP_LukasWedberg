@@ -60,7 +60,7 @@ public class GroundSensor : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.transform.parent != null)
         {
-            if (col.gameObject.transform.parent.gameObject.name == "Ground")
+            if (col.gameObject.transform.parent.gameObject.name == "Ground" || col.gameObject.transform.parent.gameObject.name == "Carriage")
             {
                 Debug.Log("Robin, you're grounded!");
 
